@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="register.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-4 shadow" style="width: 350px;">
+      <h3 class="text-center mb-3">REGISTER NEW ACCOUNT</h3>
+<form onsubmit="return validateRegister()">
+
+           <div class="mb-3">
+          <label class="form-label">NAME </label>
+          <input type="text" id="NAME" class="form-control" required>
+          <div id="NAME" class="text-danger small"></div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="" class="form-label">EMAIL ADDRESS</label>
+            <input type="email" id="EMAIL" class="form-control" required>
+            <div id="EMAIL" class="text-danger small"></div>
+        </div>
+
+             <div class="mb-3">
+          <label class="form-label">PASSWORD</label>
+          <input type="password" id="PASSWORD" class="form-control">
+          <div id="PASSWORD" class="text-danger small"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">PHONE NUMBER </label>
+            <input type="number" id="PHONE" class="form-control">
+            <div id="PHONE" class="text-danger small"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 login-btn"  style="height: auto; background-color: rgb(207, 214, 207);">
+          .REGISTER ACCOUNT.
+        </button>
+
+
+
+        <script>
+           
+function validateRegister() {
+  let isValid = true;
+
+  // Get values
+  let name = document.getElementById("NAME").value.trim();
+  let email = document.getElementById("EMAIL").value.trim();
+  let password = document.getElementById("PASSWORD").value.trim();
+  let phone = document.getElementById("PHONE").value.trim();
+
+  // Error elements
+  let nameErr = document.querySelector("#NAME + .text-danger");
+  let emailErr = document.querySelector("#EMAIL + .text-danger");
+  let passErr = document.querySelector("#PASSWORD + .text-danger");
+  let phoneErr = document.querySelector("#PHONE + .text-danger");
+
+  // Clear previous errors
+  nameErr.innerHTML = "";
+  emailErr.innerHTML = "";
+  passErr.innerHTML = "";
+  phoneErr.innerHTML = "";
+
+  // Name validation
+  if (name === "") {
+    nameErr.innerHTML = "Name is required";
+    isValid = false;
+  }
+
+  // Email validation
+  let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (email === "") {
+    emailErr.innerHTML = "Email is required";
+    isValid = false;
+  } else if (!emailPattern.test(email)) {
+    emailErr.innerHTML = "Invalid email format";
+    isValid = false;
+  }
+
+  // Password validation
+  if (password === "") {
+    passErr.innerHTML = "Password is required";
+    isValid = false;
+  } else if (password.length < 6) {
+    passErr.innerHTML = "Password must be at least 6 characters";
+    isValid = false;
+  }
+
+  // Phone validation
+  let phonePattern = /^[0-9]{10}$/;
+  if (phone === "") {
+    phoneErr.innerHTML = "Phone number is required";
+    isValid = false;
+  } else if (!phonePattern.test(phone)) {
+    phoneErr.innerHTML = "Enter a valid 10-digit phone number";
+    isValid = false;
+  }
+
+
+     if (isValid==true) {
+      alert("Login Successful");
+    }
+}
+</script>
+<br>
+
+<p style="text-align: center;"> ALREADY HAVE AN ACCOUNT ?</p>
+
+<p style="text-align: center; text-decoration: double;"> <a href="Untitled-1.html">SIGN UP</a></p>
+
+</body>
+</html>
